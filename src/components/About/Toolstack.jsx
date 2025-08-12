@@ -15,9 +15,6 @@ function Toolstack() {
       <Col xs={4} md={2} className="tech-icons">
         <SiEclipseide /> {/* Eclipse IDE icon */}
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-     <SiMicrosoft />
-      </Col>
     </Row>
   );
 }
