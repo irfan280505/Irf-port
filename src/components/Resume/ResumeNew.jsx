@@ -2,24 +2,26 @@ import React from "react";
 import { Container, Row, Button } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 
-// Import resume preview image
-import resumeImage from "../../Assets/resume-image.jpg"; // JPG/PNG preview image
+// Import resume preview image (from src/assets)
+import resumeImage from "../../Assets/Resume-image.jpg"; 
 
 function ResumeSimple() {
   const downloadResume = () => {
-    const url = process.env.PUBLIC_URL + "/Resume.pdf";
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "Resume.pdf");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // Fallback: open PDF in new tab if download doesn't start automatically
-    setTimeout(() => {
-      window.open(url, "_blank");
-    }, 1000);
+    fetch(process.env.PUBLIC_URL + "/Resume.pdf")
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "Resume.pdf"; // Force download as PDF
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((err) => {
+        console.error("Failed to download PDF", err);
+      });
   };
 
   return (
@@ -49,7 +51,7 @@ function ResumeSimple() {
 
       {/* Download Button */}
       <Button
-      className="fork-btn-inner"
+        className="fork-btn-inner"
         onClick={downloadResume}
         style={{
           fontSize: "18px",
