@@ -3,7 +3,7 @@ import { Container, Row, Button } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 
 // Import resume preview image (from src/assets)
-import resumeImage from "../../Assets/Resume-image.jpg"; 
+import resumeImage from "../../Assets/resume-image.jpg"; 
 
 function ResumeSimple() {
   const downloadResume = () => {
