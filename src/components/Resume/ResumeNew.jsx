@@ -41,7 +41,6 @@ function ResumeSimple() {
             width: "100%",
             height: "auto",
             maxWidth: "900px",
-            border: "1px solid #ddd",
             borderRadius: "8px",
             marginBottom: "20px",
           }}
