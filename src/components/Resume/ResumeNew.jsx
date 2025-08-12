@@ -7,13 +7,13 @@ import resumeImage from "../../Assets/resume-image.jpg";
 
 function ResumeSimple() {
   const downloadResume = () => {
-    fetch(process.env.PUBLIC_URL + "/Resume.pdf")
+    fetch(process.env.PUBLIC_URL + "/resume.pdf")
       .then((res) => res.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "Resume.pdf"; // Force download as PDF
+        link.download = "resume.pdf"; // Force download as PDF
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
